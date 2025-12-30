@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Ulang Tahun</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      overflow-x: hidden;
+    }
+    .card {
+      width: 95%;
+      max-width: 1000px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      animation: pop 1s ease;
+    }
+    @keyframes pop {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    h1 {
+      text-align: center;
+      margin: 0 0 12px;
+      color: #ff4b6e;
+    }
+    p {
+      text-align: center;
+      color: #333;
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+
+    /* GALLERY */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    /* MODAL */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 16px;
+      animation: zoom 0.4s ease;
+    }
+    @keyframes zoom {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+      margin-top: 18px;
+    }
+
+    .float {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 50%;
+      animation: floatUp 6s linear infinite;
+    }
+    @keyframes floatUp {
+      from { transform: translateY(100vh); opacity: 0; }
+      to { transform: translateY(-10vh); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- dekorasi animasi -->
+  <div class="float" style="left:10%; animation-delay:0s"></div>
+  <div class="float" style="left:30%; animation-delay:2s"></div>
+  <div class="float" style="left:60%; animation-delay:1s"></div>
+  <div class="float" style="left:80%; animation-delay:3s"></div>
+
+  <div class="card">
+    <h1>HAPPY BIRTHDAY BOCIILLL 🎉</h1>
+    <p>
+      <!-- GANTI TEKS INI -->
+      Semoga di umur yang baru ini, kamu selalu dikelilingi hal-hal baik,
+      tawa yang tulus, dan mimpi yang satu per satu jadi nyata.
+    </p>
+
+    <div class="gallery">
+      <!-- TAMBAH FOTO SEBANYAK-BANYAKNYA -->
+      <img src="image.png" />
+      <img src="foto2.jpg" />
+      <img src="foto3.jpg" />
+      <img src="foto4.jpg" />
+      <img src="foto5.jpg" />
+      <img src="foto6.jpg" />
+      <img src="foto7.jpg" />
+      <img src="foto8.jpg" />
+    </div>
+
+    <div class="footer">Semua foto ini adalah potongan kenangan ✨</div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal" onclick="this.style.display='none'">
+    <img id="modalImg" />
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+
+    document.querySelectorAll('.gallery img').forEach(img => {
+      img.onclick = () => {
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+      };
+    });
+  </script>
+</body>
+</html>
