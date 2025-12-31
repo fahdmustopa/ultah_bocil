@@ -1,152 +1,244 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Selamat Ulang Tahun</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      overflow-x: hidden;
-    }
-    .card {
-      width: 95%;
-      max-width: 1000px;
-      background: rgba(255,255,255,0.95);
-      border-radius: 22px;
-      padding: 26px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      animation: pop 1s ease;
-    }
-    @keyframes pop {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    h1 {
-      text-align: center;
-      margin: 0 0 12px;
-      color: #ff4b6e;
-    }
-    p {
-      text-align: center;
-      color: #333;
-      margin-bottom: 22px;
-      line-height: 1.6;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 🎂</title>
 
-    /* GALLERY */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 12px;
-    }
-    .gallery img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 14px;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    }
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  color:#333;
+}
 
-    /* MODAL */
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-    }
-    .modal img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 16px;
-      animation: zoom 0.4s ease;
-    }
-    @keyframes zoom {
-      from { transform: scale(0.7); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+/* ===== HERO ===== */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+}
+.hero img{
+  width:220px;
+  animation:float 3s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-15px)}
+}
+.hero h1{
+  margin-top:20px;
+  color:#ff4b6e;
+  font-size:2.4em;
+}
+.hero p{
+  max-width:500px;
+  margin-top:12px;
+  font-size:1.1em;
+}
+.btn{
+  margin-top:25px;
+  padding:12px 28px;
+  background:#ff4b6e;
+  color:#fff;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+}
 
-    .footer {
-      text-align: center;
-      font-size: 13px;
-      color: #777;
-      margin-top: 18px;
-    }
+/* ===== UCAPAN ===== */
+.section{
+  background:#fff;
+  margin:40px auto;
+  padding:40px 20px;
+  max-width:1100px;
+  border-radius:24px;
+}
+.ucapan{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.ucapan-text{
+  flex:1;
+  min-width:260px;
+}
+.ucapan-text h2{
+  color:#ff4b6e;
+  margin-bottom:10px;
+}
+.ucapan-foto{
+  display:flex;
+  gap:12px;
+}
+.ucapan-foto img{
+  width:120px;
+  height:160px;
+  object-fit:cover;
+  border-radius:16px;
+}
 
-    .float {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background: rgba(255,255,255,0.7);
-      border-radius: 50%;
-      animation: floatUp 6s linear infinite;
-    }
-    @keyframes floatUp {
-      from { transform: translateY(100vh); opacity: 0; }
-      to { transform: translateY(-10vh); opacity: 1; }
-    }
-  </style>
+/* ===== GALERI ===== */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:14px;
+  margin-top:20px;
+}
+.gallery img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:16px;
+  cursor:pointer;
+  transition:.3s;
+}
+.gallery img:hover{
+  transform:scale(1.05);
+}
+
+/* ===== MODAL ===== */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.8);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:99;
+}
+.modal img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:20px;
+}
+</style>
 </head>
+
 <body>
-  <!-- dekorasi animasi -->
-  <div class="float" style="left:10%; animation-delay:0s"></div>
-  <div class="float" style="left:30%; animation-delay:2s"></div>
-  <div class="float" style="left:60%; animation-delay:1s"></div>
-  <div class="float" style="left:80%; animation-delay:3s"></div>
 
-  <div class="card">
-    <h1>HAPPY BIRTHDAY BOCIILLL 🎉</h1>
-    <p>
-      <!-- GANTI TEKS INI -->
-      Semoga di umur yang baru ini, kamu selalu dikelilingi hal-hal baik,
-      tawa yang tulus, dan mimpi yang satu per satu jadi nyata.
-    </p>
+<!-- HERO -->
+<section class="hero">
+  <img src="kue.png" alt="kue ulang tahun">
+  <h1>HAPPY BIRTHDAY BOCILLL 🎉</h1>
+</section>
 
-    <div class="gallery">
-      <!-- TAMBAH FOTO SEBANYAK-BANYAKNYA -->
-      <img src="image.png" />
-      <img src="foto2.jpg" />
-      <img src="foto3.jpg" />
-      <img src="foto4.jpg" />
-      <img src="foto5.jpg" />
-      <img src="foto6.jpg" />
-      <img src="foto7.jpg" />
-      <img src="foto8.jpg" />
+<!-- UCAPAN -->
+<section class="section" id="ucapan">
+  <div class="ucapan">
+    <div class="ucapan-text">
+      <h2>ga tau apa💌</h2>
+      <p>
+        🎉 Selamat ulang tahun yang ke-14, manusia estetik ✨
+        Maaf ya kalau aku belum bisa ngasih apa-apa dan belum bisa ngasih yang terbaik 💐
+        Tapi semoga di umur yang baru ini kamu makin bahagia 😊, makin kuat 💪, makin imut (iya iya 😆), makin sabar 🤍, makin akur sama adik-adiknya 👧👦, jangan terlalu cuek nanti dikangenin 😌, makin rajin belajar 📚, makin sayang keluarga 🏡, dan makin sayang sama teman-teman 💞
+      </p>
+      <p>
+        🌱 Semoga kamu tumbuh menjadi pribadi yang:
+        ✨ hatinya lembut tapi pendiriannya kuat,
+        ✨ sabarnya luas,
+        ✨ akalnya jernih,
+        ✨ dan akhlaknya indah.
+        </p>
+        <p>
+        🤲 Semoga ilmu yang kamu pelajari selalu membawa manfaat,
+        mimpimu diberi jalan 🌈,
+        usahamu diberi kemudahan 🚪,
+        dan setiap doa yang kamu panjatkan Allah kabulkan di waktu terbaik menurut-Nya ⏳💖
+        </p>
+        <p>
+        🌸 Sebagai anak pertama, semoga kamu selalu diberi kekuatan untuk menjadi contoh yang baik tanpa harus memikul semuanya sendirian.
+        Tidak apa-apa merasa lelah 😌,
+        tidak apa-apa belajar pelan-pelan 🚶‍♀️,
+        dan tidak apa-apa menjadi diri sendiri 💫
+        </p>
+        <p>
+        💐 Semoga senyummu selalu dijaga 😊,
+        hatimu selalu dipenuhi rasa syukur 🤍,
+        dan hidupmu dipenuhi orang-orang yang tulus menyayangimu 🤗
+        </p>
+        <p>
+        ✨ Hari ini, dan di hari-hari setelahnya,
+        semoga kamu selalu berada dalam lindungan Allah 🤲,
+        dikelilingi kebaikan 🌷,
+        dan dipertemukan dengan kebahagiaan yang tidak disangka-sangka 🎁
+        </p>
+        <p>🤍 Aamiin ya Rabbal ‘aalamiin 🎂🎉</p>
     </div>
-
-    <div class="footer">Semua foto ini adalah potongan kenangan ✨</div>
+    <div class="ucapan-foto">
+      <img src="image 1.jpg">
+      <img src="image 2.jpg">
+      <img src="image.png">
+    </div>
   </div>
+</section>
 
-  <!-- MODAL -->
-  <div class="modal" id="modal" onclick="this.style.display='none'">
-    <img id="modalImg" />
+<!-- VIDEO -->
+<section class="section">
+  <h2 style="text-align:center;color:#ff4b6e">
+    Lagu yg belum kk cover 🎶
+  </h2>
+
+  <div style="margin-top:20px;display:flex;justify-content:center">
+    <iframe 
+      width="560" 
+      height="315"
+      src="https://www.youtube.com/embed/hKgl5-lkT8U?si=_adSqzUGmgvyybiK"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      style="max-width:100%;border-radius:18px">
+    </iframe>
   </div>
+</section>
 
-  <script>
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modalImg');
 
-    document.querySelectorAll('.gallery img').forEach(img => {
-      img.onclick = () => {
-        modal.style.display = 'flex';
-        modalImg.src = img.src;
-      };
-    });
-  </script>
+
+<!-- GALERI -->
+<section class="section">
+  <h2 style="text-align:center;color:#ff4b6e"> 📸📸📸📸</h2>
+  <div class="gallery">
+    <img src="image 3.jpg">
+    <img src="image 4.jpg">
+    <img src="image 5.jpg">
+    <img src="image 6.jpg">
+    <img src="image 7.jpg">
+    <img src="image 8.jpg">
+    <img src="image 9.jpg">
+    <img src="image 10.jpg">
+    <img src="image 11.jpg">
+    <img src="image 12.jpg">
+    <img src="image 13.jpg">
+    <img src="image 14.jpg">
+    <img src="image 15.jpg">
+    <img src="image 16.jpg">
+    <img src="image 17.jpg">
+    <img src="image 18.jpg">
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="this.style.display='none'">
+  <img id="modalImg">
+</div>
+
+<script>
+const modal=document.getElementById('modal');
+const modalImg=document.getElementById('modalImg');
+document.querySelectorAll('.gallery img').forEach(img=>{
+  img.onclick=()=>{
+    modal.style.display='flex';
+    modalImg.src=img.src;
+  }
+});
+</script>
+
 </body>
 </html>
